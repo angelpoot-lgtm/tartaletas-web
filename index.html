@@ -1,6 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+<header class="bg-emerald-800 shadow-xl sticky top-0 z-50 py-4">
+    <nav class="container mx-auto px-4 flex justify-between items-center">
+        <div class="font-bold text-2xl text-white">Tartaleta Redefinida</div>
+        
+        <button id="menu-button" class="md:hidden text-white focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+
+        <ul class="hidden md:flex space-x-6">
+            <li><a href="#inicio" class="text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md">Inicio</a></li>
+            <li><a href="#producto" class="text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md">Producto</a></li>
+            <li><a href="#innovacion" class="text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md">Innovación</a></li>
+            <li><a href="#beneficios" class="text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md">Beneficios</a></li>
+            <li><a href="#alergias" class="text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md">Alergias</a></li>
+            <li><a href="#experiencia" class="text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md">Experiencia</a></li>
+            <li><a href="#mercado" class="text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md">Mercado</a></li>
+            <li><a href="#futuro" class="text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md">Futuro</a></li>
+            <li><a href="#marketing" class="text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md">Marketing</a></li>
+            <li><a href="#quejas-sugerencias" class="text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md">Sugerencias</a></li>
+            <li><a href="#contacto" class="text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-emerald-700 pb-4 pt-2">
+        <ul class="flex flex-col items-center space-y-3">
+            <li><a href="#inicio" class="block text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md w-full text-center">Inicio</a></li>
+            <li><a href="#producto" class="block text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md w-full text-center">Producto</a></li>
+            <li><a href="#innovacion" class="block text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md w-full text-center">Innovación</a></li>
+            <li><a href="#beneficios" class="block text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md w-full text-center">Beneficios</a></li>
+            <li><a href="#alergias" class="block text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md w-full text-center">Alergias</a></li>
+            <li><a href="#experiencia" class="block text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md w-full text-center">Experiencia</a></li>
+            <li><a href="#mercado" class="block text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md w-full text-center">Mercado</a></li>
+            <li><a href="#futuro" class="block text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md w-full text-center">Futuro</a></li>
+            <li><a href="#marketing" class="block text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md w-full text-center">Marketing</a></li>
+            <li><a href="#quejas-sugerencias" class="block text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md w-full text-center">Sugerencias</a></li>
+            <li><a href="#contacto" class="block text-white hover:text-emerald-200 transition-colors duration-300 px-3 py-2 rounded-md w-full text-center">Contacto</a></li>
+        </ul>
+    </div>
+</header>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Innovación Culinaria Saludable: Nuestra Tartaleta Redefinida</title>
@@ -525,7 +565,7 @@
                 chatHistory.push({ role: "user", parts: [{ text: prompt }] });
                 const payload = { contents: chatHistory };
                 // IMPORTANT: Reemplaza "YOUR_API_KEY_HERE" con tu clave de API de Gemini real
-                const apiKey = "AIzaSyDrMC_tXCgZXsfLSFHyB1ZAItADMmRrstQ";
+                const apiKey ="AIzaSyDrMC_tXCgZXsfLSFHyB1ZAItADMmRrstQ";
                 const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
                 const response = await fetch(apiUrl, {
@@ -563,6 +603,21 @@
             const prompt = `Genera 5 eslóganes de marketing cortos, pegadizos y atractivos para una tartaleta saludable e innovadora, que transmita lujo, bienestar y placer sin culpa.`;
             callGeminiAPI(prompt, document.getElementById('slogans-loading'), 'Esloganes Creativos');
         });
-    </script>
+    </script>// Funcionalidad para el menú de hamburguesa
+const menuButton = document.getElementById('menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileMenuLinks = document.querySelectorAll('#mobile-menu a'); // Selecciona los enlaces del menú móvil
+
+menuButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+});
+
+// Ocultar el menú móvil al hacer clic en un enlace
+mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden'); // Oculta el menú
+        // El smooth scroll ya está manejado por el script principal
+    });
+});addEventListener
 </body>
 </html>

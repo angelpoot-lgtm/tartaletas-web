@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovación Culinaria Saludable: Nuestra Tartaleta Redefinida</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Limit chart width on larger screens */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; /* Base height for chart container */
+            max-height: 400px; /* Max height to prevent excessive vertical stretch */
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* shadow-2xl */
+            max-width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+            position: relative;
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #10B981; /* emerald-500 */
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="font-sans bg-neutral-100 text-stone-800">
+    <header class="bg-white shadow-lg sticky top-0 z-50 py-4">
+        <nav class="container mx-auto px-4 flex justify-between items-center">
+            <div class="font-bold text-2xl text-emerald-700">Tartaleta Redefinida</div>
+            <ul class="flex space-x-6">
+                <li><a href="#inicio" class="text-stone-700 hover:text-emerald-600 transition-colors duration-300">Inicio</a></li>
+                <li><a href="#producto" class="text-stone-700 hover:text-emerald-600 transition-colors duration-300">Producto</a></li>
+                <li><a href="#innovacion" class="text-stone-700 hover:text-emerald-600 transition-colors duration-300">Innovación</a></li>
+                <li><a href="#beneficios" class="text-stone-700 hover:text-emerald-600 transition-colors duration-300">Beneficios</a></li>
+                <li><a href="#alergias" class="text-stone-700 hover:text-emerald-600 transition-colors duration-300">Alergias</a></li>
+                <li><a href="#experiencia" class="text-stone-700 hover:text-emerald-600 transition-colors duration-300">Experiencia</a></li>
+                <li><a href="#mercado" class="text-stone-700 hover:text-emerald-600 transition-colors duration-300">Mercado</a></li>
+                <li><a href="#futuro" class="text-stone-700 hover:text-emerald-600 transition-colors duration-300">Futuro</a></li>
+                <li><a href="#marketing" class="text-stone-700 hover:text-emerald-600 transition-colors duration-300">Marketing</a></li>
+                <li><a href="#quejas-sugerencias" class="text-stone-700 hover:text-emerald-600 transition-colors duration-300">Sugerencias</a></li>
+                <li><a href="#contacto" class="text-stone-700 hover:text-emerald-600 transition-colors duration-300">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <section id="inicio" class="min-h-screen flex flex-col justify-center items-center text-center py-16">
+            <h1 class="text-6xl md:text-7xl font-extrabold text-emerald-700 mb-6 leading-tight drop-shadow-md">Innovación Culinaria Saludable:</h1>
+            <h2 class="text-4xl md:text-5xl font-semibold text-emerald-600 mb-8">Nuestra Tartaleta Redefinida</h2>
+            <p class="text-xl md:text-2xl text-stone-700 max-w-3xl mb-10 leading-relaxed">
+                En un mundo donde la alimentación saludable es cada vez más prioritaria, pero la tentación de los postres persiste, surge una necesidad. La dificultad de encontrar opciones deliciosas y verdaderamente nutritivas, que permitan el disfrute sin culpa, es un desafío constante. Nos complace presentar la solución innovadora a esta demanda del mercado.
+            </p>
+            <div class="text-stone-600 text-base mb-16">
+                Presentado por: Alumnos de la UABIC | 29 de Mayo
+            </div>
+            <button id="discover-more" class="bg-gradient-to-r from-emerald-500 to-emerald-700 hover:from-emerald-600 hover:to-emerald-800 text-white font-bold py-4 px-10 rounded-full shadow-xl transition-all transform hover:scale-105 duration-300">
+                Descubre Nuestra Creación
+            </button>
+        </section>
+
+        <hr class="border-t-2 border-emerald-200 my-20">
+
+        <section id="producto" class="py-16">
+            <h2 class="text-5xl font-bold text-emerald-700 text-center mb-16">El Producto: Nuestra Tartaleta Saludable</h2>
+            <div class="flex flex-col md:flex-row items-center gap-16 bg-white p-10 rounded-xl shadow-2xl">
+                <div class="md:w-1/2">
+                    <p class="text-lg text-stone-700 leading-relaxed mb-8">
+                        Nuestra tartaleta es más que un simple postre; es una **tartaleta individual elaborada con ingredientes 100% naturales**, diseñada para ofrecer una experiencia gustativa excepcional sin comprometer la salud. Cada bocado es un equilibrio perfecto entre indulgencia y bienestar, prometiendo deleitar el paladar mientras nutre el cuerpo.
+                    </p>
+                    <p class="text-lg text-stone-700 leading-relaxed">
+                        Es el resultado de una meticulosa selección de componentes y un proceso de elaboración que prioriza la pureza y el valor nutricional.
+                    </p>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://lh7-us.googleusercontent.com/image_generation_content/0" alt="Tartaleta Saludable con frutas y frutos secos" class="w-full h-96 object-cover rounded-lg shadow-xl border-2 border-emerald-100">
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-emerald-200 my-20">
+
+        <section id="innovacion" class="py-16">
+            <h2 class="text-5xl font-bold text-emerald-700 text-center mb-16">El Pilar de la Innovación Culinaria Saludable</h2>
+            <p class="text-xl text-stone-700 text-center max-w-4xl mx-auto mb-16">
+                Nuestra tartaleta no es solo "saludable"; es una manifestación de la innovación culinaria, donde la ciencia y el arte se unen para crear un postre superior.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+                <div class="bg-white p-10 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-3xl font-semibold text-emerald-600 mb-6">Ingredientes Seleccionados</h3>
+                    <ul class="list-disc list-inside text-lg text-stone-700 space-y-3">
+                        <li>**Frutas Frescas de Temporada:** Ricas en vitaminas y antioxidantes, seleccionadas por su frescura y sabor óptimo.</li>
+                        <li>**Endulzantes Naturales:** Alternativas de bajo índice glucémico como dátiles o stevia, para un dulzor equilibrado.</li>
+                        <li>**Grasas Saludables:** Aceites vegetales prensados en frío o frutos secos que aportan nutrientes esenciales y una textura inigualable.</li>
+                        <li>**Sin Aditivos:** Ausencia total de conservantes artificiales, colorantes o azúcares refinados, garantizando la pureza del producto.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-10 rounded-xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-3xl font-semibold text-emerald-600 mb-6">Técnicas de Elaboración Innovadoras</h3>
+                    <ul class="list-disc list-inside text-lg text-stone-700 space-y-3">
+                        <li>**Cocción a Baja Temperatura:** Preserva la integridad de los nutrientes y los sabores naturales, resultando en un producto más vivo y aromático.</li>
+                        <li>**Métodos Reductores de Grasa:** Procesos que minimizan el contenido graso sin comprometer la textura o el gusto, logrando una indulgencia ligera.</li>
+                        <li>**Balance de Texturas:** Desarrollo de una base crujiente y un relleno cremoso que complementan la experiencia sensorial en cada mordisco.</li>
+                        <li>**Enfoque en la Digestibilidad:** Ingredientes y preparaciones que facilitan una digestión ligera y confortable, ideal para cualquier momento del día.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-white p-10 rounded-xl shadow-2xl">
+                <h3 class="text-3xl font-semibold text-emerald-600 mb-8 text-center">Perfil Nutricional Superior</h3>
+                <p class="text-xl text-stone-700 text-center mb-10">
+                    Nuestra tartaleta no solo es deliciosa, sino que está diseñada para ofrecer un perfil nutricional óptimo, destacando en categorías clave para tu bienestar.
+                </p>
+                <div class="chart-container">
+                    <canvas id="nutritionalChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-emerald-200 my-20">
+
+        <section id="beneficios" class="py-16">
+            <h2 class="text-5xl font-bold text-emerald-700 text-center mb-16">Beneficios Clave para el Consumidor</h2>
+            <p class="text-xl text-stone-700 text-center max-w-4xl mx-auto mb-16">
+                Nuestra tartaleta ofrece una propuesta de valor integral, transformando la experiencia de consumir postres en un acto de bienestar.
+            </p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <div class="bg-white p-8 rounded-xl shadow-xl flex flex-col items-center text-center hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                    <div class="text-5xl mb-4 text-emerald-500">✨</div>
+                    <h3 class="text-2xl font-semibold text-emerald-600 mb-3">Placer sin Culpa</h3>
+                    <p class="text-stone-700 text-lg">Disfruta de un postre delicioso sin remordimientos, sabiendo que estás cuidando tu cuerpo.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-xl flex flex-col items-center text-center hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                    <div class="text-5xl mb-4 text-emerald-500">🌱</div>
+                    <h3 class="text-2xl font-semibold text-emerald-600 mb-3">Bienestar y Energía</h3>
+                    <p class="text-stone-700 text-lg">Contribuye a una dieta equilibrada, aportando nutrientes esenciales y vitalidad a tu día.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-xl flex flex-col items-center text-center hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                    <div class="text-5xl mb-4 text-emerald-500">⏱️</div>
+                    <h3 class="text-2xl font-semibold text-emerald-600 mb-3">Conveniencia</h3>
+                    <p class="text-stone-700 text-lg">Una opción saludable y gourmet, lista para consumir en cualquier momento y lugar.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-xl flex flex-col items-center text-center hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                    <div class="text-5xl mb-4 text-emerald-500">💎</div>
+                    <h3 class="text-2xl font-semibold text-emerald-600 mb-3">Calidad y Confianza</h3>
+                    <p class="text-stone-700 text-lg">Elaborado con los más altos estándares y los mejores ingredientes naturales.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-xl flex flex-col items-center text-center hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                    <div class="text-5xl mb-4 text-emerald-500">👨‍🍳</div>
+                    <h3 class="text-2xl font-semibold text-emerald-600 mb-3">Experiencia Gourmet</h3>
+                    <p class="text-stone-700 text-lg">Un deleite para los sentidos, con un sabor y presentación de alta cocina.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-emerald-200 my-20">
+
+        <section id="alergias" class="py-16">
+            <h2 class="text-5xl font-bold text-emerald-700 text-center mb-16">Alergias e Información Nutricional ⚠️</h2>
+            <p class="text-xl text-stone-700 text-center max-w-4xl mx-auto mb-16">
+                La seguridad y transparencia son nuestra prioridad. Aquí encontrarás información importante sobre alérgenos y el perfil nutricional detallado de nuestra tartaleta.
+            </p>
+            <div class="bg-white p-10 rounded-xl shadow-2xl">
+                <h3 class="text-3xl font-semibold text-emerald-600 mb-6">Información sobre Alérgenos</h3>
+                <p class="text-lg text-stone-700 mb-8">
+                    Nuestra tartaleta está elaborada con ingredientes naturales y se produce en instalaciones donde se manejan diversos alérgenos. Aunque tomamos precauciones estrictas para evitar la contaminación cruzada, es importante que los consumidores con alergias severas estén al tanto de lo siguiente:
+                </p>
+                <ul class="list-disc list-inside text-lg text-stone-700 space-y-3 mb-8">
+                    <li>**Contiene:** Frutos secos (almendras, nueces), lácteos (si aplica a tu relleno cremoso), huevos (si aplica a tu receta).</li>
+                    <li>**Puede contener trazas de:** Cacahuetes, soja, gluten (si no es certificada sin gluten y se procesa en la misma línea).</li>
+                    <li>**Recomendación:** Siempre revise la etiqueta del producto individual para obtener la información más precisa sobre alérgenos, ya que las recetas pueden variar ligeramente.</li>
+                </ul>
+                <h3 class="text-3xl font-semibold text-emerald-600 mb-6">Compromiso con la Transparencia</h3>
+                <p class="text-lg text-stone-700">
+                    Nos comprometemos a proporcionar información nutricional clara y completa en el empaque de cada tartaleta, incluyendo la lista detallada de ingredientes y la tabla de valores nutricionales. Creemos en el derecho de nuestros consumidores a tomar decisiones informadas sobre lo que comen.
+                </p>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-emerald-200 my-20">
+
+        <section id="experiencia" class="py-16">
+            <h2 class="text-5xl font-bold text-emerald-700 text-center mb-16">Experiencia y Servicio ✨</h2>
+            <p class="text-xl text-stone-700 text-center max-w-4xl mx-auto mb-16">
+                Descubre cómo nuestra tartaleta puede enriquecer cualquier ocasión. Utiliza nuestra herramienta de IA para obtener sugerencias personalizadas de servicio y maridaje.
+            </p>
+            <div class="bg-white p-10 rounded-xl shadow-2xl text-center">
+                <button id="generate-serving-suggestions" class="bg-gradient-to-r from-emerald-500 to-emerald-700 hover:from-emerald-600 hover:to-emerald-800 text-white font-bold py-4 px-10 rounded-full shadow-xl transition-all transform hover:scale-105 duration-300 flex items-center justify-center mx-auto">
+                    <span class="mr-3 text-2xl">💡</span> Generar Sugerencias de Servicio
+                </button>
+                <div id="serving-suggestions-loading" class="mt-8 flex justify-center items-center hidden">
+                    <div class="spinner"></div>
+                    <p class="ml-4 text-stone-600">Generando ideas...</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-emerald-200 my-20">
+
+        <section id="mercado" class="py-16">
+            <h2 class="text-5xl font-bold text-emerald-700 text-center mb-16">Mercado Objetivo y Posicionamiento</h2>
+            <p class="text-xl text-stone-700 text-center max-w-4xl mx-auto mb-16">
+                Nuestra tartaleta está diseñada para resonar con un público exigente que valora la salud sin sacrificar el sabor y la calidad.
+            </p>
+            <div class="bg-white p-10 rounded-xl shadow-2xl text-center">
+                <h3 class="text-3xl font-semibold text-emerald-600 mb-6">¿Quién es nuestro cliente ideal?</h3>
+                <ul class="list-disc list-inside text-lg text-stone-700 space-y-3 max-w-2xl mx-auto mb-10">
+                    <li>**Consumidores conscientes de su salud:** Aquellos que leen etiquetas y buscan opciones nutritivas y transparentes.</li>
+                    <li>**Deportistas y personas activas:** Necesitan opciones de energía limpia y recuperación, sin comprometer sus objetivos de bienestar.</li>
+                    <li>**Personas con restricciones dietéticas:** Buscan opciones deliciosas y seguras sin gluten, bajas en azúcares, veganas, etc.</li>
+                    <li>**Amantes de la gastronomía:** Que buscan productos gourmet que se alinean con un estilo de vida saludable, valorando la calidad y la innovación.</li>
+                </ul>
+                <h3 class="text-3xl font-semibold text-emerald-600 mb-6">Posicionamiento en el Mercado</h3>
+                <p class="text-xl text-stone-700 max-w-2xl mx-auto">
+                    Nos posicionamos como un **producto premium** dentro del segmento de repostería saludable, ofreciendo una **alternativa gourmet** que eleva el estándar de los postres beneficiosos para la salud. Competimos no solo por el perfil nutricional, sino por la experiencia de sabor, la calidad artesanal y la innovación constante.
+                </p>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-emerald-200 my-20">
+
+        <section id="futuro" class="py-16">
+            <h2 class="text-5xl font-bold text-emerald-700 text-center mb-16">Visión a Futuro y Próximos Pasos</h2>
+            <p class="text-xl text-stone-700 text-center max-w-4xl mx-auto mb-16">
+                Nuestra visión va más allá de esta primera creación; estamos comprometidos con la innovación continua y la expansión de nuestra oferta saludable.
+            </p>
+            <div class="bg-white p-10 rounded-xl shadow-2xl">
+                <h3 class="text-3xl font-semibold text-emerald-600 mb-6">Potencial de Expansión</h3>
+                <p class="text-lg text-stone-700 mb-8">
+                    Exploraremos nuevas variantes de sabor, así como el desarrollo de otras líneas de productos saludables que complementen nuestra filosofía de bienestar gourmet. Esto incluye opciones veganas, sin nueces, y más adaptaciones a necesidades dietéticas específicas, siempre manteniendo nuestros altos estándares de calidad y nutrición.
+                </p>
+                <h3 class="text-3xl font-semibold text-emerald-600 mb-6">Planes de Distribución y Comercialización</h3>
+                <p class="text-lg text-stone-700">
+                    Hemos innovado este producto pensando en la **distribución estratégica para cafeterías escolares**, ofreciendo una opción nutritiva y deliciosa para los estudiantes. Además, buscaremos alianzas con **tiendas especializadas en productos saludables y supermercados selectos**, ampliando nuestra presencia más allá del ámbito educativo.
+                </p>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-emerald-200 my-20">
+
+        <section id="marketing" class="py-16">
+            <h2 class="text-5xl font-bold text-emerald-700 text-center mb-16">Herramientas de Marketing ✨</h2>
+            <p class="text-xl text-stone-700 text-center max-w-4xl mx-auto mb-16">
+                Potencia tu estrategia de marca con eslóganes innovadores. Utiliza nuestra herramienta de IA para generar ideas de marketing que capturen la esencia de tu tartaleta.
+            </p>
+            <div class="bg-white p-10 rounded-xl shadow-2xl text-center">
+                <button id="generate-slogans" class="bg-gradient-to-r from-emerald-500 to-emerald-700 hover:from-emerald-600 hover:to-emerald-800 text-white font-bold py-4 px-10 rounded-full shadow-xl transition-all transform hover:scale-105 duration-300 flex items-center justify-center mx-auto">
+                    <span class="mr-3 text-2xl">✍️</span> Generar Esloganes Creativos
+                </button>
+                <div id="slogans-loading" class="mt-8 flex justify-center items-center hidden">
+                    <div class="spinner"></div>
+                    <p class="ml-4 text-stone-600">Creando esloganes...</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="border-t-2 border-emerald-200 my-20">
+
+        <section id="quejas-sugerencias" class="py-16">
+            <h2 class="text-5xl font-bold text-emerald-700 text-center mb-16">Quejas y Sugerencias 💬</h2>
+            <p class="text-xl text-stone-700 text-center max-w-4xl mx-auto mb-16">
+                Tu opinión es invaluable para nosotros. Queremos escucharte para seguir mejorando y ofrecerte la mejor experiencia con nuestros productos.
+            </p>
+            <div class="bg-white p-10 rounded-xl shadow-2xl text-center">
+                <h3 class="text-3xl font-semibold text-emerald-600 mb-6">¿Cómo enviarnos tus comentarios?</h3>
+                <p class="text-lg text-stone-700 mb-8">
+                    Agradecemos cualquier tipo de retroalimentación, ya sean sugerencias para nuevos sabores, ideas para mejorar nuestros empaques o cualquier inconveniente que hayas experimentado.
+                </p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                    <p class="text-xl text-stone-700">Puedes contactarnos directamente:</p>
+                    <a href="mailto:pootcocomangel@gmail.com" class="bg-gradient-to-r from-emerald-600 to-emerald-800 hover:from-emerald-700 hover:to-emerald-900 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all transform hover:scale-105 duration-300 flex items-center">
+                        <span class="mr-3 text-2xl">📧</span> Envíanos un Correo
+                    </a>
+                    <a href="tel:9991033426" class="bg-gradient-to-r from-emerald-600 to-emerald-800 hover:from-emerald-700 hover:to-emerald-900 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all transform hover:scale-105 duration-300 flex items-center">
+                        <span class="mr-3 text-2xl">📞</span> Llámanos
+                    </a>
+                </div>
+                <p class="text-base text-stone-600 mt-8">
+                    ¡Esperamos tus comentarios para seguir innovando juntos!
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contacto" class="bg-stone-900 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-8">¡Gracias por su atención!</h2>
+            <p class="text-xl mb-10">
+                Esperamos que nuestra Tartaleta Redefinida sea el inicio de una deliciosa y saludable revolución.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 mb-10">
+                <a href="tel:9991033426" class="bg-gradient-to-r from-emerald-600 to-emerald-800 hover:from-emerald-700 hover:to-emerald-900 text-white font-bold py-4 px-8 rounded-full shadow-xl transition-all transform hover:scale-105 duration-300 flex items-center">
+                    <span class="mr-3 text-2xl">📞</span> Llámanos: 9991033426
+                </a>
+                <a href="mailto:pootcocomangel@gmail.com" class="bg-gradient-to-r from-emerald-600 to-emerald-800 hover:from-emerald-700 hover:to-emerald-900 text-white font-bold py-4 px-8 rounded-full shadow-xl transition-all transform hover:scale-105 duration-300 flex items-center">
+                    <span class="mr-3 text-2xl">📧</span> Envíanos un correo
+                </a>
+            </div>
+            <p class="text-sm text-stone-400">© 2025 Alumnos de la UABIC. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <div id="responseModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <h3 id="modalTitle" class="text-2xl font-bold text-emerald-700 mb-4"></h3>
+            <div id="modalContent" class="text-lg text-stone-700 leading-relaxed"></div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - document.querySelector('header').offsetHeight,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Smooth scroll for "Descubre Nuestra Creación" button
+        document.getElementById('discover-more').addEventListener('click', function() {
+            const targetSection = document.getElementById('producto');
+            if (targetSection) {
+                window.scrollTo({
+                    top: targetSection.offsetTop - document.querySelector('header').offsetHeight,
+                    behavior: 'smooth'
+                });
+            }
+        });
+
+        // Chart.js initialization for Nutritional Profile
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('nutritionalChart').getContext('2d');
+
+            // Helper function to wrap long labels in Chart.js
+            function wrapLabel(label, limit) {
+                const words = label.split(' ');
+                let lines = [];
+                let currentLine = '';
+
+                words.forEach((word, index) => {
+                    if ((currentLine + word).length <= limit || currentLine === '') {
+                        currentLine += (currentLine === '' ? '' : ' ') + word;
+                    } else {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    }
+                    if (index === words.length - 1) {
+                        lines.push(currentLine);
+                    }
+                });
+                return lines;
+            }
+
+            const chartData = {
+                labels: ['Fibra', 'Proteínas', 'Azúcares Reducidos', 'Antioxidantes', 'Vitamina C', 'Vitamina A'],
+                datasets: [{
+                    label: 'Puntuación Nutricional (Escala 1-100)',
+                    data: [90, 85, 95, 92, 88, 80], // Added data for new vitamins
+                    backgroundColor: 'rgba(16, 185, 129, 0.6)',
+                    borderColor: 'rgba(16, 185, 129, 1)',
+                    borderWidth: 1,
+                    pointBackgroundColor: 'rgba(16, 185, 129, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(16, 185, 129, 1)'
+                }]
+            };
+
+            const chartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        },
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        },
+                        pointLabels: {
+                            font: {
+                                size: 14
+                            },
+                            color: '#475569',
+                            callback: function(value) {
+                                return wrapLabel(value, 16);
+                            }
+                        },
+                        ticks: {
+                            beginAtZero: true,
+                            max: 100,
+                            stepSize: 20,
+                            color: '#475569',
+                            backdropColor: 'transparent'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(context) {
+                                return context[0].label;
+                            },
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.r !== null) {
+                                    label += context.parsed.r + ' / 100';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            };
+
+            new Chart(ctx, {
+                type: 'radar',
+                data: chartData,
+                options: chartOptions
+            });
+        });
+
+        // Gemini API integration for Serving Suggestions and Slogans
+        const modal = document.getElementById('responseModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+        const closeButton = document.querySelector('.close-button');
+
+        // Function to show the modal with content
+        function showModal(title, content) {
+            modalTitle.textContent = title;
+            modalContent.innerHTML = content;
+            modal.style.display = 'flex';
+        }
+
+        // Function to hide the modal
+        closeButton.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Function to call Gemini API
+        async function callGeminiAPI(prompt, loadingElement, title) {
+            loadingElement.classList.remove('hidden'); // Show spinner
+            try {
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                // IMPORTANT: Reemplaza "YOUR_API_KEY_HERE" con tu clave de API de Gemini real
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    const text = result.candidates[0].content.parts[0].text;
+                    showModal(title, text.replace(/\n/g, '<br>')); // Display response in modal, replace newlines with <br>
+                } else {
+                    showModal('Error', 'No se pudo generar una respuesta. Inténtalo de nuevo.');
+                }
+            } catch (error) {
+                console.error('Error calling Gemini API:', error);
+                showModal('Error', 'Hubo un problema al conectar con el servicio. Por favor, inténtalo más tarde.');
+            } finally {
+                loadingElement.classList.add('hidden'); // Hide spinner
+            }
+        }
+
+        // Event listener for Serving Suggestions button
+        document.getElementById('generate-serving-suggestions').addEventListener('click', () => {
+            const prompt = `Genera 5 ideas creativas y elegantes para servir una tartaleta saludable de frutas (fresas, manzana, arándanos) con una base crujiente y un relleno cremoso. Incluye sugerencias de maridaje de bebidas y ocasiones ideales.`;
+            callGeminiAPI(prompt, document.getElementById('serving-suggestions-loading'), 'Sugerencias de Servicio');
+        });
+
+        // Event listener for Slogan Generator button
+        document.getElementById('generate-slogans').addEventListener('click', () => {
+            const prompt = `Genera 5 eslóganes de marketing cortos, pegadizos y atractivos para una tartaleta saludable e innovadora, que transmita lujo, bienestar y placer sin culpa.`;
+            callGeminiAPI(prompt, document.getElementById('slogans-loading'), 'Esloganes Creativos');
+        });
+    </script>
+</body>
+</html>
